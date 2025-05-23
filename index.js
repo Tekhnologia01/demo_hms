@@ -62,12 +62,17 @@ app.use('/forgot',forgotRoutes );
 
 app.use('/uploads', express.static(path.join(__dirname, "src/uploads")));  
  
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3000;
  
 // 404 Handler
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
+
+app.get('/api', (req, res) => {
+  res.send('Hello!');
+});
+
  
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
